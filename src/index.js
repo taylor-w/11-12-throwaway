@@ -1,16 +1,22 @@
-// this only works because of webpack
-// normally, node only uses required
-// i.e.) const fs = require('fs')
-import fs from "fs";
+import https from "https";
 
-// example of a settimeout
-setTimeout(() => {
-  fs.readFile(__filename, "utf8", (err, results) => {
-    if (err) {
-      console.error(err);
-    } else {
-      console.log(results);
-    }
-  });
-  console.log("Results Read");
-}, 500);
+const req = https.request(
+  {
+    hostname: "google.com",
+    port: 443,
+    method: "GET",
+    path: "/",
+  },
+  (res) => {
+    console.log(res.statusCode);
+    res.on("data", (data) => {
+      console.log(data);
+    });
+
+    res.on("error", (error) => {
+      console.error(error);
+    });
+  }
+);
+
+req.end();
