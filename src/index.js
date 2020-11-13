@@ -13,4 +13,4 @@ setTimeout(() => {
     }
   });
   console.log("Results Read");
-}, 5000);
+}, 500);
