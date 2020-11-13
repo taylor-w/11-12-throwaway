@@ -3,6 +3,11 @@
 // i.e.) const fs = require('fs')
 import fs from "fs";
 
+// example of a settimeout
+setTimeout(() => {
+  console.log("howdy partner");
+}, 5000);
+
 fs.readFile(__filename, "utf8", (err, results) => {
   if (err) {
     console.error(err);
