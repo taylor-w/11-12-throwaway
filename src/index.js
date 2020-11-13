@@ -5,13 +5,12 @@ import fs from "fs";
 
 // example of a settimeout
 setTimeout(() => {
-  console.log("howdy partner");
+  fs.readFile(__filename, "utf8", (err, results) => {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log(results);
+    }
+  });
+  console.log("Results Read");
 }, 5000);
-
-fs.readFile(__filename, "utf8", (err, results) => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log(results);
-  }
-});
